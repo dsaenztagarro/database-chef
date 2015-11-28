@@ -1,0 +1,7 @@
+DEPENDENCIES
+  database_sl
+    path: .
+    metadata: true
+
+GRAPH
+  database_sl (0.1.0)
