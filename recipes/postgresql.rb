@@ -25,8 +25,13 @@ package ["postgresql-#{version}", "postgresql-contrib-#{version}"]
 # db client
 package "postgresql-client-#{version}"
 
+# update config
 cookbook_file "/etc/postgresql/#{version}/main/pg_hba.conf" do
   group 'postgres'
   source 'pg_hba_trust_local.conf'
   user 'postgres'
+end
+
+execute 'service_restart' do
+  command 'service postgresql restart'
 end
