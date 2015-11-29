@@ -18,7 +18,7 @@ execute 'add_apt_repository' do
 end
 
 # db server
-version = node['postgresql']['version']
+version = node['database_sl']['postgresql']['version']
 
 package ["postgresql-#{version}", "postgresql-contrib-#{version}"]
 
@@ -32,6 +32,6 @@ cookbook_file "/etc/postgresql/#{version}/main/pg_hba.conf" do
   user 'postgres'
 end
 
-execute 'service_restart' do
-  command 'service postgresql restart'
+service 'postgresql' do
+  action :reload
 end
