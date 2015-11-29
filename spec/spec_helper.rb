@@ -10,6 +10,8 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::Console
 ]
 SimpleCov.minimum_coverage(100)
-SimpleCov.start
+SimpleCov.start do
+  add_group 'Recipes', 'recipes'
+end
 
 at_exit { ChefSpec::Coverage.report! }

@@ -1,16 +1,21 @@
 ---
 driver:
   name: vagrant
+  network:
+    - ['private_network', { ip: '192.168.0.15' }]
 
 provisioner:
-  name: chef_solo
+  name: chef_zero
 
 platforms:
   - name: ubuntu-14.04
-  - name: centos-7.1
+    driver:
+      customize:
+        memory: 2048
 
 suites:
   - name: default
     run_list:
-      - recipe[database_sl::default]
+      - recipe[database_sl::postgresql]
     attributes:
+
