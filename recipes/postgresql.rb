@@ -25,6 +25,8 @@ package ["postgresql-#{version}", "postgresql-contrib-#{version}"]
 # db client
 package "postgresql-client-#{version}"
 
-# cookbook_file "/etc/postgresql/#{version}/main/pg_hba.conf" do
-#   source 'pg_hba.conf'
-# end
+cookbook_file "/etc/postgresql/#{version}/main/pg_hba.conf" do
+  group 'postgres'
+  source 'pg_hba_trust_local.conf'
+  user 'postgres'
+end
