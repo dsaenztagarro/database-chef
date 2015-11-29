@@ -1,5 +1,7 @@
 database_sl Cookbook
 ====================
+
+Super light database cookbook
 TODO: Enter the cookbook description here.
 
 e.g.
@@ -15,10 +17,8 @@ e.g.
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
 
-e.g.
-#### database_sl::default
+#### database_sl::postgresql
 <table>
   <tr>
     <th>Key</th>
@@ -27,19 +27,18 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['database_sl']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['database_sl']['postgresql']['version']</tt></td>
+    <td>String</td>
+    <td>PostgreSQL database server version</td>
+    <td><tt>9.4</tt></td>
   </tr>
 </table>
 
 Usage
 -----
-#### database_sl::default
-TODO: Write usage instructions for each cookbook.
 
-e.g.
+#### database_sl::postgresql
+
 Just include `database_sl` in your node's `run_list`:
 
 ```json
@@ -50,6 +49,14 @@ Just include `database_sl` in your node's `run_list`:
   ]
 }
 ```
+
+For sharing at Chef Supermarket:
+
+```
+knife cookbook site share "database_sl" "Databases"
+```
+
+
 
 Contributing
 ------------
