@@ -1,3 +1,7 @@
+def default_connection
+  { hostname: 'localhost', port: 5432, user: 'postgres' }
+end
+
 # Connection options:
 #   -h, --host=HOSTNAME      database server host or socket directory (default: "/var/run/postgresql")
 #   -p, --port=PORT          database server port (default: "5432")

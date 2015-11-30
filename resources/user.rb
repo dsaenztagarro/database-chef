@@ -4,10 +4,6 @@ property :name, String
 property :password, String
 property :connection, Hash, default: {}
 
-def default_connection
-  { hostname: 'localhost', port: 5432, user: 'postgres' }
-end
-
 action :create do
   # Chef::Log.info("postgresql_user[#{resource_name}]")
 
