@@ -2,10 +2,6 @@ database_sl Cookbook
 ====================
 
 Super light database cookbook
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
 
 Requirements
 ------------

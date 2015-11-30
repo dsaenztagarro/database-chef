@@ -1,3 +1,7 @@
+# breakpoint 'beginning' do
+#   action :break
+# end
+
 execute 'system-locales' do
   command <<-EOH
     locale-gen en_US.UTF-8
@@ -20,10 +24,16 @@ end
 # db server
 version = node['database_sl']['postgresql']['version']
 
-package ["postgresql-#{version}", "postgresql-contrib-#{version}"]
+package %W(postgresql-#{version}
+           postgresql-contrib-#{version}
+           postgresql-server-dev-#{version})
 
 # db client
 package "postgresql-client-#{version}"
+
+# Installs postgreSQL dev package with header of PostgreSQL
+# Required to install 'pg' gem
+package %w(libpq-dev build-essential)
 
 # update config
 cookbook_file "/etc/postgresql/#{version}/main/pg_hba.conf" do
@@ -33,5 +43,11 @@ cookbook_file "/etc/postgresql/#{version}/main/pg_hba.conf" do
 end
 
 service 'postgresql' do
-  action :reload
+  action :restart
+end
+
+postgresql_user 'rails_db_user'  do
+  name 'pepito'
+  password 'donjose'
+  action :create
 end
