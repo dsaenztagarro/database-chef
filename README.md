@@ -1,3 +1,5 @@
+[![Cookbook Version](https://img.shields.io/cookbook/v/database_sl.svg)](https://community.opscode.com/cookbooks/database_sl)
+
 database_sl Cookbook
 ====================
 
