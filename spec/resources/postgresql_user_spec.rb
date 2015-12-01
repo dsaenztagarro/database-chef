@@ -14,10 +14,14 @@ describe 'database_sl::postgresql_test' do
   end
 
   it 'creates a postgresql user' do
-    expect(chef_run).to create_postgresql_user('webuser')
+    expect(chef_run).to create_postgresql_user('create_webuser')
   end
 
   it 'creates a postgresql database' do
     expect(chef_run).to create_postgresql_database('database_test')
+  end
+
+  it 'grants privileges to a postgresql user' do
+    expect(chef_run).to grant_postgresql_user('grant_webuser')
   end
 end
