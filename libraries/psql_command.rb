@@ -14,4 +14,3 @@ module Psql
     end
   end
 end
-

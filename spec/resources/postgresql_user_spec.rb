@@ -6,7 +6,7 @@ describe 'database_sl::postgresql_test' do
   end
 
   before(:each) do
-    stub_command("grep -q http://apt.postgresql.org/pub/repos/apt/ /etc/apt/sources.list.d/pgdg.list").and_return(false)
+    stub_command('grep -q http://apt.postgresql.org/pub/repos/apt/ /etc/apt/sources.list.d/pgdg.list').and_return(false)
   end
 
   it 'includes the `postgresql` recipe' do
