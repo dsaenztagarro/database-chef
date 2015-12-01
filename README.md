@@ -1,8 +1,8 @@
+[![Cookbook Version](https://img.shields.io/cookbook/v/database_sl.svg)](https://community.opscode.com/cookbooks/database_sl)
 [![Build Status](https://travis-ci.org/dsaenztagarro/database_sl.svg?branch=master)](https://travis-ci.org/dsaenztagarro/database_sl)
 [![Code Climate](https://codeclimate.com/github/dsaenztagarro/database_sl/badges/gpa.svg)](https://codeclimate.com/github/dsaenztagarro/database_sl)
 [![Coverage Status](https://coveralls.io/repos/dsaenztagarro/database_sl/badge.svg?branch=master&service=github)](https://coveralls.io/github/dsaenztagarro/database_sl?branch=master)
 [![Dependency Status](https://gemnasium.com/dsaenztagarro/database_sl.svg)](https://gemnasium.com/dsaenztagarro/database_sl)
-[![Cookbook Version](https://img.shields.io/cookbook/v/database_sl.svg)](https://community.opscode.com/cookbooks/database_sl)
 
 database_sl Cookbook
 ====================
