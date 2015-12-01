@@ -1,5 +1,7 @@
 resource_name :postgresql_database
 
+default_action :create
+
 property :instance_name, String, name_property: true
 property :name, String
 property :owner, String, default: 'postgres'
