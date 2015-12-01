@@ -7,13 +7,21 @@
 database_sl Cookbook
 ====================
 
-Super light database cookbook
+Super light database cookbook. As opposed to other database cookbooks, to run
+queries it is used only the official terminal-based tool.
+Living on the edge, it is used the approach to build [custom
+resources](https://docs.chef.io/custom_resources.html) introduced in
+chef-client version 12.5.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
 
-e.g.
+#### Platforms
+- Ubuntu 14.04 LTS
+
+#### Chef
+- Chef 12.2.0
+
 #### packages
 - `toaster` - database_sl needs toaster to brown your bagel.
 
@@ -47,7 +55,7 @@ Just include `database_sl` in your node's `run_list`:
 {
   "name":"my_node",
   "run_list": [
-    "recipe[database_sl]"
+    "recipe[database_sl::postgresql]"
   ]
 }
 ```
