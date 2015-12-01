@@ -1,3 +1,5 @@
+include_recipe 'database_sl::postgresql'
+
 postgresql_user 'webuser' do
   password 'webuser123'
   action :create
