@@ -2,15 +2,14 @@ resource_name :postgresql_user
 
 property :name, String
 property :password, String
-property :connection, Hash, default: {}
+property :connection, Psql::Connection, default: Psql::Connection.new
 
 action :create do
-  # Chef::Log.info("postgresql_user[#{resource_name}]")
-
-  query = "CREATE ROLE #{name || resource_name} " \
+  user_name = name || resource_name
+  query = "CREATE ROLE #{user_name} " \
           "WITH LOGIN PASSWORD '#{password}';"
 
   execute 'psql_command' do
-    command "psql #{connection_options} --command \"#{query}\""
+    command Psql::Command.new(connection, query).to_s
   end
 end
