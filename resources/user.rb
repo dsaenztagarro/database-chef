@@ -19,9 +19,7 @@ action :create do
 end
 
 action :grant do
-  access_privileges = privileges.join ' '
-
-  query = "GRANT #{access_privileges} " \
+  query = "GRANT #{privileges.join ' '} " \
           "ON DATABASE #{database_name} " \
           "TO #{name};"
 
