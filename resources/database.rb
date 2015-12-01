@@ -1,15 +1,15 @@
 resource_name :postgresql_database
 
+property :instance_name, String, name_property: true
 property :name, String
-property :owner, String
+property :owner, String, default: 'postgres'
 property :connection, Psql::Connection, default: Psql::Connection.new
 
 action :create do
-  db_name = name || resource_name
-  query = "CREATE DATABASE #{db_name} " \
+  query = "CREATE DATABASE #{name} " \
           "OWNER #{owner};"
 
   execute 'psql_command' do
-    command Psql::Command.new(connection, query).to_s
+    command psql_builder.build(query)
   end
 end

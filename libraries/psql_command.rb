@@ -1,14 +1,16 @@
+# Contains helpers for psql, the PostgreSQL interactive terminal
 module Psql
-  class Command
+  # Builds a psql command
+  class Builder
     # @param connection [Psql::Connection]
-    # @param query [String] The sql query
-    def initialize(connection, query)
+    def initialize(connection)
       @connection = connection
-      @query = query
     end
 
-    def to_s
-      "psql #{@connection} --command \"#{@query}\""
+    # @param query [String] The sql query
+    # @return [String] The command to run on terminal
+    def build(query)
+      "psql #{@connection} --command \"#{query}\""
     end
   end
 end

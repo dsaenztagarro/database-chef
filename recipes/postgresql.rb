@@ -45,9 +45,3 @@ end
 service 'postgresql' do
   action :restart
 end
-
-postgresql_user 'rails_db_user'  do
-  name 'pepito'
-  password 'donjose'
-  action :create
-end

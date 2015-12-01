@@ -18,5 +18,6 @@ suites:
   - name: default
     run_list:
       - recipe[database_sl::postgresql]
+      - recipe[database_sl::postgresql_test]
     attributes:
 
