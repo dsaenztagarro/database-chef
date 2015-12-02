@@ -4,4 +4,4 @@ DEPENDENCIES
     metadata: true
 
 GRAPH
-  database_sl (0.1.0)
+  database_sl (0.1.1)
