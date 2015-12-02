@@ -19,8 +19,7 @@ execute 'adding_apt_repository' do
   not_if 'grep -q http://apt.postgresql.org/pub/repos/apt/ /etc/apt/sources.list.d/pgdg.list'
 end
 
-version = node['database_sl']['postgresql']['version']
-postgresql_version = node['database_sl']['postgresql']['version']
+postgresql_version = node['database']['postgresql']['version']
 
 package 'specifying db server' do
   package_name %W(postgresql
@@ -40,7 +39,7 @@ package 'specifying pg gem dependencies' do
 end
 
 # update config
-cookbook_file "/etc/postgresql/#{version}/main/pg_hba.conf" do
+cookbook_file "/etc/postgresql/#{postgresql_version}/main/pg_hba.conf" do
   group 'postgres'
   source 'pg_hba_trust_local.conf'
   user 'postgres'

@@ -1,1 +1,1 @@
-default['database_sl']['postgresql']['version'] = '9.4'
+default['database']['postgresql']['version'] = '9.4'

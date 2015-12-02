@@ -4,7 +4,7 @@ describe 'database_sl::postgresql' do
   let(:postgresql_version) { '9.4' }
   let(:chef_run) do
     ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '14.04') do |node|
-      node.set['database_sl']['postgresql']['version'] = postgresql_version
+      node.set['database']['postgresql']['version'] = postgresql_version
     end.converge described_recipe
   end
 

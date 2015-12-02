@@ -89,8 +89,6 @@ For sharing at Chef Supermarket:
 knife cookbook site share "database_sl" "Databases"
 ```
 
-
-
 Contributing
 ------------
 1. Fork the repository on Github
