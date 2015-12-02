@@ -22,7 +22,7 @@ end
 postgresql_version = node['database']['postgresql']['version']
 
 package 'specifying db server' do
-  package_name %W(postgresql
+  package_name %w(postgresql
                   postgresql-contrib
                   postgresql-server-dev)
   version postgresql_version
