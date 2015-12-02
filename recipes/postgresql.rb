@@ -7,13 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-execute 'system-locales' do
-  command <<-EOH
-    locale-gen en_US.UTF-8
-    update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
-  EOH
-end
-
 include_recipe 'database_sl::system_requirements'
 
 execute 'adding_apt_repository' do
@@ -26,19 +19,25 @@ execute 'adding_apt_repository' do
   not_if 'grep -q http://apt.postgresql.org/pub/repos/apt/ /etc/apt/sources.list.d/pgdg.list'
 end
 
-# db server
 version = node['database_sl']['postgresql']['version']
+postgresql_version = node['database_sl']['postgresql']['version']
 
-package %W(postgresql-#{version}
-           postgresql-contrib-#{version}
-           postgresql-server-dev-#{version})
+package 'specifying db server' do
+  package_name %W(postgresql
+                  postgresql-contrib
+                  postgresql-server-dev)
+  version postgresql_version
+end
 
-# db client
-package "postgresql-client-#{version}"
+package 'specifying db client' do
+  package_name 'postgresql-client'
+  version postgresql_version
+end
 
 # Installs postgreSQL dev package with header of PostgreSQL
-# Required to install 'pg' gem
-package %w(libpq-dev build-essential)
+package 'specifying pg gem dependencies' do
+  package_name %w(libpq-dev build-essential)
+end
 
 # update config
 cookbook_file "/etc/postgresql/#{version}/main/pg_hba.conf" do

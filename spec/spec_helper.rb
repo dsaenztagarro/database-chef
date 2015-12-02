@@ -9,7 +9,7 @@ formatters = [Coveralls::SimpleCov::Formatter,
               SimpleCov::Formatter::Console]
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(formatters)
-# SimpleCov.minimum_coverage(100)
+SimpleCov.minimum_coverage(100)
 SimpleCov.start do
   add_group 'Recipes', 'recipes'
 end
