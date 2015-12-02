@@ -23,7 +23,7 @@ Requirements
 - Chef 12.2.0
 
 #### packages
-- `toaster` - database_sl needs toaster to brown your bagel.
+- `database_sl::postgresql` - Installs PostgreSQL db server and client
 
 Attributes
 ----------
@@ -100,4 +100,4 @@ Contributing
 
 License and Authors
 -------------------
-Authors: TODO: List authors
+Authors: David Saenz Tagarro

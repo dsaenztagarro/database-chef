@@ -5,7 +5,12 @@ This file is used to list changes made in each version of the database_sl cookbo
 
 0.1.0
 -----
-- [your_name] - Initial release of database_sl
+- [David Saenz Tagarro] - Initial release of database_sl
+
+0.1.1
+-----
+- [David Saenz Tagarro] - Full chefspec coverage
+- [David Saenz Tagarro] - Reviewed README
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
