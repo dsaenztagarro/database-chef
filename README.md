@@ -29,21 +29,44 @@ Attributes
 ----------
 
 #### database_sl::postgresql
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['database_sl']['postgresql']['version']</tt></td>
-    <td>String</td>
-    <td>PostgreSQL database server version</td>
-    <td><tt>9.4</tt></td>
-  </tr>
-</table>
 
+See `attributes/postgresql.rb` for default values.
+
+* `node['database']['postgresql']['version']` - Version of the postgresql db
+
+Resources
+---------
+
+Example create postgresql user:
+
+```ruby
+postgresql_user 'create_webuser' do
+  name 'webuser'
+  password 'webuser123'
+  action :create
+end
+```
+
+Example grant privileges to postgresql user:
+
+```ruby
+postgresql_user 'grant_webuser' do
+  database_name 'database_test'
+  name 'webuser'
+  password 'webuser123'
+  privileges ['ALL PRIVILEGES']
+  action :grant
+end
+```
+
+Example create postgresql database:
+
+```ruby
+postgresql_database 'database_test' do
+  action :create
+end
+
+```
 Usage
 -----
 
