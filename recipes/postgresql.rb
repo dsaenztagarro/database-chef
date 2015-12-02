@@ -1,6 +1,11 @@
-# breakpoint 'beginning' do
-#   action :break
-# end
+#
+# Cookbook Name:: database_sl
+# Recipe:: postgresql
+#
+# Copyright 2015, David Saenz Tagarro
+#
+# All rights reserved - Do Not Redistribute
+#
 
 execute 'system-locales' do
   command <<-EOH
@@ -9,9 +14,9 @@ execute 'system-locales' do
   EOH
 end
 
-package ['wget', 'ca-certificates']
+include_recipe 'database_sl::system_requirements'
 
-execute 'add_apt_repository' do
+execute 'adding_apt_repository' do
   user 'root'
   command <<-EOF
     sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
