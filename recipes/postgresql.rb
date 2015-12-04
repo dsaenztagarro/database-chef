@@ -9,28 +9,34 @@
 
 include_recipe 'database_sl::system_requirements'
 
+postgresql_package_version = node['database']['postgresql']['package_version']
+postgresql_version = node['database']['postgresql']['version']
+
+# wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+remote_file 'adding_postgresql_media_key' do
+  path '/tmp/ACCC4CF8.asc'
+  source 'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
+end
+
 execute 'adding_apt_repository' do
   user 'root'
   command <<-EOF
     sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
-    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-    apt-get -y update
+    sudo apt-key add /tmp/ACCC4CF8.asc
+    sudo apt-get -y update
   EOF
-  not_if 'grep -q http://apt.postgresql.org/pub/repos/apt/ /etc/apt/sources.list.d/pgdg.list'
+  not_if 'sudo apt-key list | grep "PostgreSQL Debian Repository"'
 end
-
-postgresql_version = node['database']['postgresql']['version']
 
 package 'specifying db server' do
   package_name %w(postgresql
-                  postgresql-contrib
-                  postgresql-server-dev)
-  version postgresql_version
+                  postgresql-contrib)
+  version postgresql_package_version
 end
 
 package 'specifying db client' do
   package_name 'postgresql-client'
-  version postgresql_version
+  version postgresql_package_version
 end
 
 # Installs postgreSQL dev package with header of PostgreSQL

@@ -12,6 +12,10 @@ This file is used to list changes made in each version of the database_sl cookbo
 - [David Saenz Tagarro] - Full chefspec coverage
 - [David Saenz Tagarro] - Reviewed README
 
+0.1.2
+-----
+- [David Saenz Tagarro] - Fixed FC041: Execute resource used to run curl or wget commands
+
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
 

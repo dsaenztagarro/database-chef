@@ -32,7 +32,14 @@ Attributes
 
 See `attributes/postgresql.rb` for default values.
 
+* `node['database']['postgresql']['package_version']` - Version of the postgresql package
 * `node['database']['postgresql']['version']` - Version of the postgresql db
+
+To check available package versions run command:
+
+```
+sudo apt-cache madison postgresql
+```
 
 Resources
 ---------

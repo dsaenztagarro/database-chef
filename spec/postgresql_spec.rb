@@ -12,6 +12,10 @@ describe 'database_sl::postgresql' do
     stub_command('grep -q http://apt.postgresql.org/pub/repos/apt/ /etc/apt/sources.list.d/pgdg.list').and_return(false)
   end
 
+  it 'creates a remote_file adding postgresql media key' do
+    expect(chef_run).to create_remote_file('adding_postgresql_media_key')
+  end
+
   it 'runs a execute when adding apt repository' do
     expect(chef_run).to run_execute('adding_apt_repository')
   end
