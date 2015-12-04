@@ -1,15 +1,17 @@
 require 'spec_helper'
 
 describe 'database_sl::postgresql' do
+  let(:postgresql_package_version) { '9.4+170.pgdg14.04+1' }
   let(:postgresql_version) { '9.4' }
   let(:chef_run) do
     ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '14.04') do |node|
+      node.set['database']['postgresql']['package_version'] = postgresql_package_version
       node.set['database']['postgresql']['version'] = postgresql_version
     end.converge described_recipe
   end
 
   before(:each) do
-    stub_command('grep -q http://apt.postgresql.org/pub/repos/apt/ /etc/apt/sources.list.d/pgdg.list').and_return(false)
+    stub_command("sudo apt-key list | grep \"PostgreSQL Debian Repository\"").and_return(false)
   end
 
   it 'creates a remote_file adding postgresql media key' do
@@ -21,12 +23,12 @@ describe 'database_sl::postgresql' do
   end
 
   it 'installs all packages when specifying db server' do
-    packages = ['postgresql', 'postgresql-contrib', 'postgresql-server-dev']
-    expect(chef_run).to install_package(packages).with(version: postgresql_version)
+    packages = ['postgresql', 'postgresql-contrib']
+    expect(chef_run).to install_package(packages).with(version: postgresql_package_version)
   end
 
   it 'installs all packages when specifying db client' do
-    expect(chef_run).to install_package('postgresql-client').with(version: postgresql_version)
+    expect(chef_run).to install_package('postgresql-client').with(version: postgresql_package_version)
   end
 
   it 'installs all packages when specifying pg gem dependencies' do

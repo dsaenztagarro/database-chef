@@ -25,7 +25,7 @@ execute 'adding_apt_repository' do
     sudo apt-key add /tmp/ACCC4CF8.asc
     sudo apt-get -y update
   EOF
-  not_if 'sudo apt-key list | grep "PostgreSQL Debian Repository"'
+  not_if "sudo apt-key list | grep \"PostgreSQL Debian Repository\""
 end
 
 package 'specifying db server' do
