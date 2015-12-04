@@ -16,6 +16,10 @@ This file is used to list changes made in each version of the database_sl cookbo
 -----
 - [David Saenz Tagarro] - Fixed FC041: Execute resource used to run curl or wget commands
 
+0.1.3
+-----
+- [David Saenz Tagarro] - Fixed FC013: Use file_cache_path rather than hard-coding tmp paths
+
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
 

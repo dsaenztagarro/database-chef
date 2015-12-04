@@ -14,7 +14,7 @@ postgresql_version = node['database']['postgresql']['version']
 
 # wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
 remote_file 'adding_postgresql_media_key' do
-  path '/tmp/ACCC4CF8.asc'
+  path "#{Chef::Config[:file_cache_path]}/ACCC4CF8.asc"
   source 'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
 end
 
@@ -22,7 +22,7 @@ execute 'adding_apt_repository' do
   user 'root'
   command <<-EOF
     sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
-    sudo apt-key add /tmp/ACCC4CF8.asc
+    sudo apt-key add "#{Chef::Config[:file_cache_path]}/ACCC4CF8.asc"
     sudo apt-get -y update
   EOF
   not_if "sudo apt-key list | grep \"PostgreSQL Debian Repository\""
