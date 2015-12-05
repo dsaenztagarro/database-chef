@@ -18,7 +18,7 @@ tmp_media_key_path = "#{Chef::Config[:file_cache_path]}/ACCC4CF8.asc"
 remote_file 'adding_postgresql_media_key' do
   path tmp_media_key_path
   source 'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
-  not_if { ::File.exists? tmp_media_key_path }
+  not_if { ::File.exist? tmp_media_key_path }
 end
 
 execute 'adding_apt_repository' do
