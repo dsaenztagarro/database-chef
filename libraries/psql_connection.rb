@@ -5,12 +5,12 @@ module Psql
     attr_reader :hostname, :port, :user
 
     # @param [Hash] opts the options to create a connection
-    # @option opts [String] :hostname ('localhost') The hostname
+    # @option opts [String] :hostname ('127.0.0.1') The hostname
     # @option opts [Fixnum] :port (5432) The port
     # @option opts [String] :user ('postgres') The user
     # @option opts [String] :password ('') The password
     def initialize(opts = {})
-      @hostname = opts[:hostname] || 'localhost'
+      @hostname = opts[:hostname] || '127.0.0.1'
       @port = opts[:port] || 5432
       @user = opts[:user] || 'postgres'
       @password = opts[:password] || ''

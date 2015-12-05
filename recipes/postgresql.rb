@@ -12,10 +12,13 @@ include_recipe 'database_sl::system_requirements'
 postgresql_package_version = node['database']['postgresql']['package_version']
 postgresql_version = node['database']['postgresql']['version']
 
+tmp_media_key_path = "#{Chef::Config[:file_cache_path]}/ACCC4CF8.asc"
+
 # wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
 remote_file 'adding_postgresql_media_key' do
-  path "#{Chef::Config[:file_cache_path]}/ACCC4CF8.asc"
+  path tmp_media_key_path
   source 'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
+  not_if { ::File.exists? tmp_media_key_path }
 end
 
 execute 'adding_apt_repository' do
@@ -52,5 +55,5 @@ cookbook_file "/etc/postgresql/#{postgresql_version}/main/pg_hba.conf" do
 end
 
 service 'postgresql' do
-  action :restart
+  action [:restart, :reload]
 end
