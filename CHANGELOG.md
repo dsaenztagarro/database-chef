@@ -5,25 +5,29 @@ This file is used to list changes made in each version of the database_sl cookbo
 
 0.1.0
 -----
-- [David Saenz Tagarro] - Initial release of database_sl
+- Initial release of database_sl
 
 0.1.1
 -----
-- [David Saenz Tagarro] - Full chefspec coverage
-- [David Saenz Tagarro] - Reviewed README
+- Full chefspec coverage
+- Reviewed README
 
 0.1.2
 -----
-- [David Saenz Tagarro] - Fixed FC041: Execute resource used to run curl or wget commands
+- Fixed FC041: Execute resource used to run curl or wget commands
 
 0.1.3
 -----
-- [David Saenz Tagarro] - Fixed FC013: Use file_cache_path rather than hard-coding tmp paths
+- Fixed FC013: Use file_cache_path rather than hard-coding tmp paths
 
 0.1.4
 -----
-- [David Saenz Tagarro] - Added guard to adding postgresql media key
-- [David Saenz Tagarro] - Fixed reference to localhost in connection options (127.0.0.1)
+- Added guard to adding postgresql media key
+- Fixed reference to localhost in connection options (127.0.0.1)
+
+0.1.5
+-----
+- Renamed `adding_apt_repository` resource to `adding_postgresql_apt_repository`
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.

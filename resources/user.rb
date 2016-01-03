@@ -3,6 +3,7 @@ resource_name :postgresql_user
 default_action :create
 
 property :instance_name, String, name_property: true
+property :name, String
 property :password, String
 property :connection, Psql::Connection, default: Psql::Connection.new
 

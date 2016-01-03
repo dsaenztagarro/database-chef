@@ -21,7 +21,7 @@ remote_file 'adding_postgresql_media_key' do
   not_if { ::File.exist? tmp_media_key_path }
 end
 
-execute 'adding_apt_repository' do
+execute 'adding_postgresql_apt_repository' do
   user 'root'
   command <<-EOF
     sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'

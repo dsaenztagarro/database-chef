@@ -19,7 +19,7 @@ describe 'database_sl::postgresql' do
   end
 
   it 'runs a execute when adding apt repository' do
-    expect(chef_run).to run_execute('adding_apt_repository')
+    expect(chef_run).to run_execute('adding_postgresql_apt_repository')
   end
 
   it 'installs all packages when specifying db server' do
@@ -45,6 +45,6 @@ describe 'database_sl::postgresql' do
   end
 
   it 'converges successfully' do
-    expect { :chef_run }.to_not raise_error
+    expect { chef_run }.to_not raise_error
   end
 end
