@@ -29,6 +29,10 @@ This file is used to list changes made in each version of the database_sl cookbo
 -----
 - Renamed `adding_apt_repository` resource to `adding_postgresql_apt_repository`
 
+0.1.6
+-----
+- Added guard property to user and database resources
+
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
 

@@ -16,8 +16,12 @@ action :create do
   query = "CREATE ROLE #{name} " \
           "WITH LOGIN PASSWORD '#{password}';"
 
-  execute 'psql_command' do
-    command psql_builder.build(query)
+  search_query = "SELECT * FROM pg_roles WHERE rolname = '#{name}';"
+  exists = search_command_for(search_query)
+
+  execute "psql_create_role_#{name}" do
+    command psql_for(query)
+    not_if exists
   end
 end
 
@@ -26,7 +30,11 @@ action :grant do
           "ON DATABASE #{database_name} " \
           "TO #{name};"
 
-  execute 'psql_command' do
-    command psql_builder.build(query)
+  search_query = "SELECT * FROM pg_roles WHERE rolname = '#{name}';"
+  exists = search_command_for(search_query)
+
+  execute "psql_grant_privileges_to_#{name}" do
+    command psql_for(query)
+    only_if exists
   end
 end

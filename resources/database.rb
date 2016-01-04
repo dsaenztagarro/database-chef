@@ -11,7 +11,11 @@ action :create do
   query = "CREATE DATABASE #{name} " \
           "OWNER #{owner};"
 
+  search_query = "SELECT * FROM pg_database WHERE datname = '#{name}';"
+  exists = search_command_for(search_query)
+
   execute 'psql_command' do
-    command psql_builder.build(query)
+    command psql_for(query)
+    not_if exists
   end
 end
