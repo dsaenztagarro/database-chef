@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: database_sl
-# Recipe:: postgresql
+# Recipe:: postgresql_server
 #
 # Copyright 2015, David Saenz Tagarro
 #
@@ -9,38 +9,10 @@
 
 include_recipe 'database_sl::system_requirements'
 
-postgresql_package_version = node['database']['postgresql']['package_version']
-postgresql_version = node['database']['postgresql']['version']
+origin = node['database']['postgresql']['origin']
+version = node['database']['postgresql']['version']
 
-tmp_media_key_path = "#{Chef::Config[:file_cache_path]}/ACCC4CF8.asc"
-
-# wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-remote_file 'adding_postgresql_media_key' do
-  path tmp_media_key_path
-  source 'https://www.postgresql.org/media/keys/ACCC4CF8.asc'
-  not_if { ::File.exist? tmp_media_key_path }
-end
-
-execute 'adding_postgresql_apt_repository' do
-  user 'root'
-  command <<-EOF
-    sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
-    sudo apt-key add "#{Chef::Config[:file_cache_path]}/ACCC4CF8.asc"
-    sudo apt-get -y update
-  EOF
-  not_if "sudo apt-key list | grep \"PostgreSQL Debian Repository\""
-end
-
-package 'specifying db server' do
-  package_name %w(postgresql
-                  postgresql-contrib)
-  version postgresql_package_version
-end
-
-package 'specifying db client' do
-  package_name 'postgresql-client'
-  version postgresql_package_version
-end
+include_recipe "database_sl::postgresql_#{origin}"
 
 # Installs postgreSQL dev package with header of PostgreSQL
 package 'specifying pg gem dependencies' do
@@ -48,7 +20,7 @@ package 'specifying pg gem dependencies' do
 end
 
 # update config
-cookbook_file "/etc/postgresql/#{postgresql_version}/main/pg_hba.conf" do
+cookbook_file "/etc/postgresql/#{version}/main/pg_hba.conf" do
   group 'postgres'
   source 'pg_hba_trust_local.conf'
   user 'postgres'

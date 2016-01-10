@@ -106,6 +106,11 @@ Before running `kitchen test`:
 vagrant box add ubuntu-14.04 https://github.com/kraksoft/vagrant-box-ubuntu/releases/download/14.04/ubuntu-14.04-amd64.box
 ```
 
+Documentation
+-------------
+
+- [PostreSQL Linux downloads (Ubuntu)](http://www.postgresql.org/download/linux/ubuntu/)
+
 Contributing
 ------------
 1. Fork the repository on Github
