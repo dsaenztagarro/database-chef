@@ -1,6 +1,5 @@
 default['database']['postgresql']['origin'] = :distribution
 default['database']['postgresql']['version'] = '9.4'
-default['database']['postgresql']['repository_version'] = nil
 
 # PostgreSQL Apt Repository
 #
