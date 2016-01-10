@@ -33,6 +33,12 @@ This file is used to list changes made in each version of the database_sl cookbo
 -----
 - Added guard property to user and database resources
 
+0.1.7
+-----
+- Refactoring to one recipe for each install method: `:distribution` (version
+  included in distribution) and `:apt_repository` (version included in
+  postgresql apt repository)
+
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
 
