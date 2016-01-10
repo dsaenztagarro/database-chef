@@ -15,8 +15,7 @@ describe 'database_sl::postgresql_distribution' do
   end
 
   it 'installs all packages when specifying db client' do
-    expect(chef_run).to(install_package('specifying db client').with(
-      package_name: "postgresql-client-#{version}"))
+    expect(chef_run).to install_package('specifying db client').with(package_name: "postgresql-client-#{version}")
   end
 
   it 'converges successfully' do
