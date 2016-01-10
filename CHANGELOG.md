@@ -39,6 +39,10 @@ This file is used to list changes made in each version of the database_sl cookbo
   included in distribution) and `:apt_repository` (version included in
   postgresql apt repository)
 
+0.1.8
+-----
+- Removed not required postgresql default attribute
+
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
 

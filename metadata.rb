@@ -4,7 +4,7 @@ maintainer_email 'david.saenz.tagarro@gmail.com'
 license          'MIT'
 description      'Installs/Configures database_sl'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.7'
+version          '0.1.8'
 
 recipe 'database_sl::postgresql', 'Installs PostgreSQL db server and client'
 recipe 'database_sl::postgresql_distribution', 'Installs a version of PostgreSQL db server and client included in distribution'
