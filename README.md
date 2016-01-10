@@ -24,6 +24,8 @@ Requirements
 
 #### packages
 - `database_sl::postgresql` - Installs PostgreSQL db server and client
+- `database_sl::postgresql_distribution` - Installs a version of PostgreSQL db server and client included in distribution'
+- `database_sl::postgresql_apt_repository` - Installs a version of PostgreSQL db server and client from PostgreSQL Apt Repository'
 
 Attributes
 ----------
@@ -32,8 +34,9 @@ Attributes
 
 See `attributes/postgresql.rb` for default values.
 
-* `node['database']['postgresql']['package_version']` - Version of the postgresql package
-* `node['database']['postgresql']['version']` - Version of the postgresql db
+* `node['database']['postgresql']['origin']` - Origin of version installed (Possible values: `:distribution`, `:apt_repository`
+* `node['database']['postgresql']['version']` - Version of the postgresql db (Example: `9.4`)
+* `node['database']['postgresql']['repository_version']` - Version of the postgresql at apt repository
 
 To check available package versions run command:
 
