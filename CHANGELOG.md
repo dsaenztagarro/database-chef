@@ -35,9 +35,11 @@ This file is used to list changes made in each version of the database_sl cookbo
 
 0.1.7
 -----
+
 - Refactoring to one recipe for each install method: `:distribution` (version
-  included in distribution) and `:apt_repository` (version included in
-  postgresql apt repository)
+  included in distribution - recipe `database_sl::postgresql_distribution`) and
+  `:apt_repository` (version included in postgresql apt repository - recipe
+  `database_sl::postgresql_apt_repository`)
 
 0.1.8
 -----
